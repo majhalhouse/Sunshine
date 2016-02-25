@@ -54,6 +54,8 @@ public class ForecastFragment extends Fragment {
 
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
+            FetchWeatherTask weatherTask=new FetchWeatherTask();
+            weatherTask.execute();
             return true;
 
         }
@@ -89,13 +91,16 @@ public class ForecastFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
 
+
+
+
         return rootView;
     }
 
 
-    public class FetchWeatnerTask extends AsyncTask<Void, Void, Void> {
+    public class FetchWeatherTask extends AsyncTask<Void, Void, Void> {
 
-        private final String LOG_TAG = FetchWeatnerTask.class.getSimpleName();
+        private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
         @Override
         protected Void doInBackground(Void... params) {
